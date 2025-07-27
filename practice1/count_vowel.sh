@@ -4,11 +4,17 @@
 count_vowels()
 {
 	ch=$(echo "$1" | tr 'A-Z' 'a-z')
-	if [ $ch = "a" ] || [ $ch = "e" ] || [ $ch = "i" ] || [ $ch = "o" ] || [ $ch = "u" ]; then
-		echo "$1 is Vowel."
-	else 
-		echo "$1 is not Vowel."
-	fi
+	count=0
+	
+	for (( i=0; i<${#ch}; i++ ))
+	do
+		c=${ch:$i:1}
+		if [ $c = "a" ] || [ $c = "e" ] || [ $c = "i" ] || [ $c = "o" ] || [ $c = "u" ]; then
+			count=$((count + 1))
+		fi
+	done
+
+	echo "Total vowels : $count"
 }
 
 read -p "Enter a charector : " sentence
